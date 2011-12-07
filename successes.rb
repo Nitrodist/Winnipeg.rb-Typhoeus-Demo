@@ -22,7 +22,7 @@ end
 random_uri = URI('http://localhost:4567/with_random_delay')
 no_random_uri = URI('http://localhost:4567/with_no_random_delay')
 timeout = 5 # seconds
-requests = 600
+requests = 400
 
 
 puts "Net::HTTP"
@@ -99,6 +99,25 @@ puts "\n\nTyphoeus, up to 20 threads (random delay)"
 time_method do
   hydra = Typhoeus::Hydra.new(:max_concurrency => 20)
   hydra.disable_memoization
+  requests.times do
+    request = Typhoeus::Request.new(random_uri.to_s, :timeout => timeout*1000)
+    request.on_complete do |response|
+      if response.success?
+        print "."
+      else
+        print "#"
+      end
+    end
+    hydra.queue(request)
+  end
+
+  hydra.run # this is a blocking call
+end
+
+puts "\n\nTyphoeus, up to 20 threads (random delay, memoization)"
+time_method do
+  hydra = Typhoeus::Hydra.new(:max_concurrency => 20)
+#  hydra.disable_memoization
   requests.times do
     request = Typhoeus::Request.new(random_uri.to_s, :timeout => timeout*1000)
     request.on_complete do |response|
