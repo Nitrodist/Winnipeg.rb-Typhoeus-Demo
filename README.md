@@ -2,8 +2,9 @@
 Demo for [Winnipeg.rb](http://winnipegrb.org).
 
 Libraries in use:
-  * [Sinatra](http://www.sinatrarb.com/) - server to hit against
-  * [Typhoeus](https://github.com/dbalatero/typhoeus) - http parallization library
+
+ * [Sinatra](http://www.sinatrarb.com/) - server to hit against
+ * [Typhoeus](https://github.com/dbalatero/typhoeus) - http parallization library
 
 ## Quick Start
 
