@@ -11,7 +11,7 @@ Libraries in use:
 ```shell
 gem install sinatra typhoeus
 ruby -rubygems server.rb # in separate window
-ruby successes.rb
+ruby successes.rb # if using 1.9.2... supply -rubygems if using 1.8.7
 ```
 
 Don't forget to kill your **sinatra** instance.
