@@ -8,6 +8,8 @@ Libraries in use:
 
 ## Quick Start
 
+Make sure you have the dev libraries for libcurl installed!
+
 ```shell
 gem install sinatra typhoeus
 ruby -rubygems server.rb # in separate window
